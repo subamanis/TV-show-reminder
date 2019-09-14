@@ -3,7 +3,10 @@ package org.userInteraction;
 import org.logic.TVShow;
 import org.logic.Utilities;
 
+import java.time.LocalDate;
 import java.util.*;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 public class ConsoleInteraction
 {
@@ -12,7 +15,6 @@ public class ConsoleInteraction
     private static final int ADD_TV_SHOW_OPTION = 2;
     private static final int SPECIFY_SEASON_OPTION = 3;
     private static final int DELETE_OPTION = 4;
-    private static final int SAVE_OPTION = 5;
 
     List<TVShow> showList = new ArrayList<>();
     Scanner sc = new Scanner(System.in);
@@ -28,7 +30,7 @@ public class ConsoleInteraction
             printMenu();
 
             menuOption = Utilities.getIntInputWithBounds("Select an option: ",
-            "Error: please enter a valid menu option", EXIT_OPTION, SAVE_OPTION);
+            "Error: please enter a valid menu option", EXIT_OPTION, DELETE_OPTION);
 
             System.out.println();
             if(menuOption == PRINT_SHOWS_OPTION){
@@ -39,8 +41,6 @@ public class ConsoleInteraction
                 specifySeason();
             }else if(menuOption == DELETE_OPTION){
                 deleteShow();
-            }else if(menuOption == SAVE_OPTION){
-                saveShows();
             }
         }while (menuOption != 0);
     }
@@ -53,7 +53,6 @@ public class ConsoleInteraction
         System.out.println(ADD_TV_SHOW_OPTION +") Add a TV-show");
         System.out.println(SPECIFY_SEASON_OPTION +") Specify next season for a show");
         System.out.println(DELETE_OPTION +") Delete a show");
-        System.out.println(SAVE_OPTION +") Save shows");
     }
 
     private void printShowsStatus()
@@ -63,6 +62,13 @@ public class ConsoleInteraction
             System.out.println("No TV-shows saved yet!");
             return;
         }
+
+        showList.sort((o1, o2) -> {
+            if (o1.getNextSeason().releaseDate == null) return -1;
+            if (o2.getNextSeason().releaseDate == null) return 1;
+
+            return (int) DAYS.between(o1.getNextSeason().releaseDate, o2.getNextSeason().releaseDate);
+        });
 
         System.out.println("Let me update you on the status of your favourite TV-shows:");
         for (TVShow tvs : showList)
@@ -88,6 +94,8 @@ public class ConsoleInteraction
         }
         System.out.println("\n"+currentShow.getNextSeason());
         System.out.println("Show added!");
+
+        saveShows();
     }
 
     private void specifySeason()
@@ -110,6 +118,8 @@ public class ConsoleInteraction
         Utilities.createSeason(chosenShow);
         System.out.println("\n"+chosenShow.getNextSeason());
         System.out.println("Season information updated!");
+
+        saveShows();
     }
 
     private void deleteShow()
@@ -123,10 +133,15 @@ public class ConsoleInteraction
 
         showList.remove(chosenShowIndex-1);
         System.out.println("Show removed!");
+
+        saveShows();
     }
 
     private void saveShows()
     {
-        System.out.println(Utilities.saveToFile(showList));
+        String result = Utilities.saveToFile(showList);
+        if(!result.isBlank()){
+            System.out.println(result);
+        }
     }
 }

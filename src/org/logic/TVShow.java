@@ -58,9 +58,9 @@ public class TVShow
 
     public static class Season
     {
-        int number;
-        LocalDate releaseDate;
-        String releasePeriod;
+        public int number;
+        public LocalDate releaseDate;
+        public String releasePeriod;
 
         Season(int number, LocalDate releaseDate)
         {
@@ -82,4 +82,3 @@ public class TVShow
     }
 
 }
-

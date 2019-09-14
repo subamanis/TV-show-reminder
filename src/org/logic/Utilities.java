@@ -14,9 +14,8 @@ public class Utilities
     private static Scanner sc = new Scanner(System.in);
     private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 
-    public static final String PATH_TO_DATA_FILE = "shows/showData.txt";
     public static final String PATH_TO_FILE_DIRECTORY = "shows";
-
+    public static final String PATH_TO_DATA_FILE = PATH_TO_FILE_DIRECTORY+"/showData.txt";
 
     /* Ensures an int input from the user between two bounds.
      *  All the necessary checks are made.*/
@@ -88,7 +87,7 @@ public class Utilities
             return "IOException while trying to save";
         }
 
-        return "Data successfully saved";
+        return "";
     }
 
     /* Reads the file this.PATH_TO_DATA_FILE and fills the showList List of ConsoleInteraction.java

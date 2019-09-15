@@ -4,6 +4,7 @@ import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.time.format.ResolverStyle;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.List;
@@ -12,7 +13,9 @@ import java.util.Scanner;
 public class Utilities
 {
     private static Scanner sc = new Scanner(System.in);
-    private static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
+    private static DateTimeFormatter formatter = DateTimeFormatter
+            .ofPattern("dd-MM-uuuu")
+            .withResolverStyle(ResolverStyle.STRICT);
 
     public static final String PATH_TO_FILE_DIRECTORY = "shows";
     public static final String PATH_TO_DATA_FILE = PATH_TO_FILE_DIRECTORY+"/showData.txt";

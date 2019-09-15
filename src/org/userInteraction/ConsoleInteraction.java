@@ -3,7 +3,6 @@ package org.userInteraction;
 import org.logic.TVShow;
 import org.logic.Utilities;
 
-import java.time.LocalDate;
 import java.util.*;
 
 import static java.time.temporal.ChronoUnit.DAYS;
@@ -100,6 +99,12 @@ public class ConsoleInteraction
 
     private void specifySeason()
     {
+        if (showList.isEmpty())
+        {
+            System.out.println("No TV-shows saved yet!");
+            return;
+        }
+
         for (int i = 0; i < showList.size(); i++) {
             System.out.println(i+1+") "+showList.get(i).getShowName());
         }
@@ -124,6 +129,12 @@ public class ConsoleInteraction
 
     private void deleteShow()
     {
+        if (showList.isEmpty())
+        {
+            System.out.println("No TV-shows saved yet!");
+            return;
+        }
+
         for (int i = 0; i < showList.size(); i++) {
             System.out.println(i+1+") "+showList.get(i).getShowName());
         }

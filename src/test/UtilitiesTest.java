@@ -1,6 +1,7 @@
 package test;
 
-import org.logic.Utilities;
+
+import org.gui.logic.Utilities;
 
 import static org.junit.jupiter.api.Assertions.*;
 

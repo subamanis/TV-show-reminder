@@ -76,6 +76,31 @@ public class ScreenPanelTwo extends JPanel implements ActionListener
         G1.add(dateFormatRadio3);
         G2.add(listOrderRadio1);
         G2.add(listOrderRadio2);
+        updatePreferencesOfRadioButtons();
+    }
+
+    public void updatePreferencesOfRadioButtons()
+    {
+        for(Enumeration<AbstractButton> buttons = G1.getElements(); buttons.hasMoreElements();){
+            AbstractButton button = buttons.nextElement();
+            String buttonText = button.getText();
+            String selectedDateFormat = Utilities.getCurrentFormatterPattern();
+
+            if(buttonText.equals(selectedDateFormat)){
+                button.setSelected(true);
+                break;
+            }
+        }
+
+        for(Enumeration<AbstractButton> buttons = G2.getElements(); buttons.hasMoreElements();){
+            AbstractButton button = buttons.nextElement();
+            String buttonText = button.getText();
+            String selectedSortingOrderOption = Utilities.getSelectedSortingOrderOption();
+
+            if(buttonText.equals(selectedSortingOrderOption)){
+                button.setSelected(true);
+            }
+        }
     }
 
     @Override
@@ -99,6 +124,7 @@ public class ScreenPanelTwo extends JPanel implements ActionListener
             ScreenPanelOne.updateDateFormatText();
             Utilities.savePrefs();
             MainFrame.updateShowTable();
+
             EditShowPanel.textAreas.get(0).setText("");
             EditShowPanel.textAreas.get(1).setText("");
             EditShowPanel.textAreas.get(2).setText("");

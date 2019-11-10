@@ -25,7 +25,7 @@ public class ScreenPanelOne extends JPanel implements ActionListener
     public ScreenPanelOne()
     {
         this.setBackground(new Color(215, 240,255));
-        this.setBounds(0,45, MainFrame.SCREEN_SIZE.width/2, 3*MainFrame.SCREEN_SIZE.height/5);
+        this.setBounds(0,45, MainFrame.SCREEN_SIZE.width/2, 2*MainFrame.SCREEN_SIZE.height/3);
         this.setVisible(false);
 
         this.setBorder(BorderFactory.createTitledBorder("Add a show!"));
@@ -63,10 +63,12 @@ public class ScreenPanelOne extends JPanel implements ActionListener
 
         JPanel bottomButtonsPanel = new JPanel();
         bottomButtonsPanel.setBackground(new Color(215, 240,255));
-        bottomButtonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 0));
+        bottomButtonsPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 17, 0));
         JButton submitButton = new JButton("Submit");
+        submitButton.setPreferredSize(new Dimension(120,40));
         submitButton.addActionListener(this);
         JButton clearButton = new JButton("Clear");
+        clearButton.setPreferredSize(new Dimension(120,40));
         clearButton.addActionListener(this);
         bottomButtonsPanel.add(submitButton);
         bottomButtonsPanel.add(clearButton);

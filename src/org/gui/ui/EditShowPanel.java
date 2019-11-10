@@ -16,7 +16,7 @@ public class EditShowPanel extends JPanel
     public static void addComponentsToPane(Container pane) {
         pane.setLayout(new BoxLayout(pane, BoxLayout.Y_AXIS));
 
-        pane.add(Box.createRigidArea(new Dimension(0, 25)));
+        pane.add(Box.createRigidArea(new Dimension(0, 35)));
         addLabelAndTextField(pane, "Name");
         pane.add(Box.createRigidArea(new Dimension(0, 22)));
         addLabelAndTextField(pane, "Season number");
@@ -26,7 +26,7 @@ public class EditShowPanel extends JPanel
 
         JPanel btnPanel = new JPanel();
         btnPanel.setBackground(new Color(210, 210, 210));
-        btnPanel.setLayout(new FlowLayout(FlowLayout.CENTER,0,10));
+        btnPanel.setLayout(new FlowLayout(FlowLayout.CENTER,0,20));
         btnPanel.setPreferredSize(new Dimension(140,160));
 
         JButton updateButton = new JButton("Update!");

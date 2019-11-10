@@ -2,8 +2,6 @@ package org.gui.ui;
 
 import org.gui.logic.*;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,7 +9,6 @@ import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.Toolkit;
 
 public class MainFrame extends JFrame
@@ -27,7 +24,7 @@ public class MainFrame extends JFrame
 
         initializeShowList();
 
-        setBounds(SCREEN_SIZE.width/4,SCREEN_SIZE.height/8,SCREEN_SIZE.width/2 + 17, 3*SCREEN_SIZE.height/5);
+        setBounds(SCREEN_SIZE.width/4,SCREEN_SIZE.height/8,SCREEN_SIZE.width/2 + 17, 2*SCREEN_SIZE.height/3);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
         setLayout(new BorderLayout());

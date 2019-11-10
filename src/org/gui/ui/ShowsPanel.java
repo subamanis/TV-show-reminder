@@ -1,11 +1,10 @@
 package org.gui.ui;
+import org.gui.logic.TVShow;
 import org.gui.logic.Utilities;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.time.LocalDate;
-import java.util.Arrays;
 import java.util.Vector;
 
 public class ShowsPanel extends JPanel

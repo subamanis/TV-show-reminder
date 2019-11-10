@@ -1,5 +1,7 @@
 package org.gui.logic;
 
+import org.gui.ui.ScreenPanelTwo;
+
 import java.io.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -205,6 +207,18 @@ public abstract class Utilities
         }else{
             currentSortingOrder = sortingOrders[index];
         }
+    }
+
+    public static String getSelectedSortingOrderOption()
+    {
+        int index = 0;
+        for (int i = 0; i < sortingOrders.length; i++) {
+            if(sortingOrders[i] == currentSortingOrder){
+                index = i;
+                break;
+            }
+        }
+        return sortingOrderOptions[index];
     }
 
     private static void setSortingOrder(int order){
